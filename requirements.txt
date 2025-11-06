@@ -1,0 +1,10 @@
+Django==4.2.7
+djangorestframework==3.14.0
+transformers==4.35.2
+torch==2.1.1
+sentencepiece==0.1.99
+accelerate==0.24.1
+redis==5.0.1
+python-decouple==3.8
+uvicorn==0.24.0
+fastapi==0.104.1
