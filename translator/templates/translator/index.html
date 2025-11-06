@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Translator - Multilingual</title>
+    <title>AI Translator - Multilingual Translation</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -167,6 +167,24 @@
             color: #1565c0;
         }
         
+        .unsupported-info {
+            background: #ffebee;
+            border: 1px solid #ffcdd2;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 0.9em;
+            color: #c62828;
+        }
+        
+        .language-option-available {
+            color: #000000;
+        }
+        
+        .language-option-unavailable {
+            color: #999999;
+            font-style: italic;
+        }
+        
         /* Custom scrollbar */
         .text-area::-webkit-scrollbar {
             width: 6px;
@@ -196,6 +214,15 @@
             font-weight: normal;
             padding-left: 10px;
         }
+        
+        .feature-badge {
+            background: linear-gradient(135deg, #000000, #434343);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -208,16 +235,23 @@
                         <h1 class="display-4 fw-bold header-title mb-3">
                             <i class="fas fa-language me-3"></i>AI Translator
                         </h1>
-                        <p class="lead header-subtitle">Supporting 25+ languages with smart translation routing</p>
+                        <p class="lead header-subtitle">Advanced multilingual translation with 25+ languages and smart routing</p>
+                        <div class="mt-3">
+                            <span class="feature-badge me-2"><i class="fas fa-brain me-1"></i>AI Powered</span>
+                            <span class="feature-badge me-2"><i class="fas fa-globe-africa me-1"></i>African Languages</span>
+                            <span class="feature-badge"><i class="fas fa-bolt me-1"></i>Real-time</span>
+                        </div>
                     </div>
 
                     <!-- Language Selection -->
                     <div class="row align-items-center mb-4">
                         <div class="col-md-5">
-                            <label class="form-label">Source Language:</label>
+                            <label class="form-label">
+                                <i class="fas fa-arrow-down me-2"></i>Source Language
+                            </label>
                             <select class="form-select language-select" id="sourceLang">
                                 <!-- European Languages -->
-                                <optgroup label="European Languages">
+                                <optgroup label="🌍 European Languages">
                                     <option value="en">English</option>
                                     <option value="es">Spanish</option>
                                     <option value="fr">French</option>
@@ -228,7 +262,7 @@
                                 </optgroup>
                                 
                                 <!-- Asian Languages -->
-                                <optgroup label="Asian Languages">
+                                <optgroup label="🌏 Asian Languages">
                                     <option value="zh">Chinese</option>
                                     <option value="ja">Japanese</option>
                                     <option value="ko">Korean</option>
@@ -236,22 +270,26 @@
                                 </optgroup>
                                 
                                 <!-- African Languages -->
-                                <optgroup label="African Languages">
+                                <optgroup label="🌍 African Languages (Available)">
                                     <option value="sw">Swahili</option>
                                     <option value="yo">Yoruba</option>
                                     <option value="ig">Igbo</option>
                                     <option value="ha">Hausa</option>
                                     <option value="am">Amharic</option>
                                     <option value="so">Somali</option>
-                                    <option value="zu">Zulu</option>
                                     <option value="xh">Xhosa</option>
                                     <option value="rw">Kinyarwanda</option>
                                     <option value="ny">Chichewa</option>
                                     <option value="mg">Malagasy</option>
                                     <option value="ln">Lingala</option>
-                                    <option value="sn">Shona</option>
-                                    <option value="st">Sesotho</option>
-                                    <option value="tn">Setswana</option>
+                                </optgroup>
+                                
+                                <!-- Coming Soon Languages -->
+                                <optgroup label="⏳ Coming Soon" class="language-option-unavailable">
+                                    <option value="zu" disabled>Zulu</option>
+                                    <option value="sn" disabled>Shona</option>
+                                    <option value="st" disabled>Sesotho</option>
+                                    <option value="tn" disabled>Setswana</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -263,10 +301,12 @@
                         </div>
                         
                         <div class="col-md-5">
-                            <label class="form-label">Target Language:</label>
+                            <label class="form-label">
+                                <i class="fas fa-arrow-up me-2"></i>Target Language
+                            </label>
                             <select class="form-select language-select" id="targetLang">
                                 <!-- European Languages -->
-                                <optgroup label="European Languages">
+                                <optgroup label="🌍 European Languages">
                                     <option value="es">Spanish</option>
                                     <option value="en">English</option>
                                     <option value="fr">French</option>
@@ -277,7 +317,7 @@
                                 </optgroup>
                                 
                                 <!-- Asian Languages -->
-                                <optgroup label="Asian Languages">
+                                <optgroup label="🌏 Asian Languages">
                                     <option value="zh">Chinese</option>
                                     <option value="ja">Japanese</option>
                                     <option value="ko">Korean</option>
@@ -285,22 +325,26 @@
                                 </optgroup>
                                 
                                 <!-- African Languages -->
-                                <optgroup label="African Languages">
+                                <optgroup label="🌍 African Languages (Available)">
                                     <option value="sw">Swahili</option>
                                     <option value="yo">Yoruba</option>
                                     <option value="ig">Igbo</option>
                                     <option value="ha">Hausa</option>
                                     <option value="am">Amharic</option>
                                     <option value="so">Somali</option>
-                                    <option value="zu">Zulu</option>
                                     <option value="xh">Xhosa</option>
                                     <option value="rw">Kinyarwanda</option>
                                     <option value="ny">Chichewa</option>
                                     <option value="mg">Malagasy</option>
                                     <option value="ln">Lingala</option>
-                                    <option value="sn">Shona</option>
-                                    <option value="st">Sesotho</option>
-                                    <option value="tn">Setswana</option>
+                                </optgroup>
+                                
+                                <!-- Coming Soon Languages -->
+                                <optgroup label="⏳ Coming Soon" class="language-option-unavailable">
+                                    <option value="zu" disabled>Zulu</option>
+                                    <option value="sn" disabled>Shona</option>
+                                    <option value="st" disabled>Sesotho</option>
+                                    <option value="tn" disabled>Setswana</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -313,6 +357,10 @@
                                 <i class="fas fa-info-circle me-2"></i>
                                 <span id="translationInfoText">Translation path information</span>
                             </div>
+                            <div class="unsupported-info" id="unsupportedInfo" style="display: none;">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <span id="unsupportedInfoText">This language combination is not available</span>
+                            </div>
                         </div>
                     </div>
 
@@ -322,6 +370,7 @@
                             <div class="mb-3">
                                 <label class="form-label">
                                     <i class="fas fa-keyboard me-2"></i>Input Text
+                                    <small class="text-muted ms-1">(Max 1000 characters)</small>
                                 </label>
                                 <textarea class="form-control text-area" id="inputText" 
                                           placeholder="Enter text to translate..." 
@@ -341,6 +390,8 @@
                                     <div class="text-muted text-center py-5">
                                         <i class="fas fa-arrow-left fa-2x mb-3 d-block"></i>
                                         Your translation will appear here
+                                        <br>
+                                        <small class="mt-2">Select languages and enter text to begin</small>
                                     </div>
                                 </div>
                             </div>
@@ -356,6 +407,10 @@
                             
                             <button class="btn btn-outline-dark" id="clearBtn">
                                 <i class="fas fa-eraser me-2"></i>Clear All
+                            </button>
+                            
+                            <button class="btn btn-outline-secondary" id="speakBtn" style="display: none;">
+                                <i class="fas fa-volume-up me-2"></i>Speak
                             </button>
                         </div>
                     </div>
@@ -381,22 +436,24 @@
                     <!-- Quick Examples -->
                     <div class="row mt-5">
                         <div class="col-12">
-                            <h6 class="text-center text-muted mb-3">Try These Cross-Language Examples:</h6>
+                            <h6 class="text-center text-muted mb-3">
+                                <i class="fas fa-lightbulb me-2"></i>Try These Working Examples:
+                            </h6>
                             <div class="d-flex flex-wrap justify-content-center gap-2">
                                 <button class="btn btn-sm example-btn" data-text="Hello, how are you today?" data-source="en" data-target="ny">
-                                    English → Chichewa
+                                    🇬🇧 → 🇲🇼 English → Chichewa
                                 </button>
                                 <button class="btn btn-sm example-btn" data-text="Moni, muli bwanji?" data-source="ny" data-target="es">
-                                    Chichewa → Spanish
+                                    🇲🇼 → 🇪🇸 Chichewa → Spanish
                                 </button>
                                 <button class="btn btn-sm example-btn" data-text="Habari za asubuhi?" data-source="sw" data-target="fr">
-                                    Swahili → French
+                                    🇹🇿 → 🇫🇷 Swahili → French
                                 </button>
                                 <button class="btn btn-sm example-btn" data-text="Kedu ka i mere?" data-source="ig" data-target="de">
-                                    Igbo → German
+                                    🇳🇬 → 🇩🇪 Igbo → German
                                 </button>
-                                <button class="btn btn-sm example-btn" data-text="Sawubona, unjani?" data-source="zu" data-target="zh">
-                                    Zulu → Chinese
+                                <button class="btn btn-sm example-btn" data-text="Sannu, kana lafiya?" data-source="ha" data-target="zh">
+                                    🇳🇬 → 🇨🇳 Hausa → Chinese
                                 </button>
                             </div>
                         </div>
@@ -407,7 +464,7 @@
                 <div class="row mt-4">
                     <div class="col-md-3 mb-3">
                         <div class="stats-card p-3 text-center">
-                            <i class="fas fa-bolt fa-2x mb-2 stats-icon"></i>
+                            <i class="fas fa-route fa-2x mb-2 stats-icon"></i>
                             <h5 class="mb-1 header-title">Smart Routing</h5>
                             <small class="text-muted">Direct or pivot translation</small>
                         </div>
@@ -422,42 +479,77 @@
                     <div class="col-md-3 mb-3">
                         <div class="stats-card p-3 text-center">
                             <i class="fas fa-globe-africa fa-2x mb-2 stats-icon"></i>
-                            <h5 class="mb-1 header-title">African Languages</h5>
-                            <small class="text-muted">15+ African languages</small>
+                            <h5 class="mb-1 header-title">African Focus</h5>
+                            <small class="text-muted">11 African languages</small>
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="stats-card p-3 text-center">
-                            <i class="fas fa-language fa-2x mb-2 stats-icon"></i>
-                            <h5 class="mb-1 header-title">25+ Languages</h5>
-                            <small class="text-muted">Any combination supported</small>
+                            <i class="fas fa-bolt fa-2x mb-2 stats-icon"></i>
+                            <h5 class="mb-1 header-title">Fast & Reliable</h5>
+                            <small class="text-muted">Real-time performance</small>
                         </div>
                     </div>
                 </div>
 
-                <!-- Translation Info Section -->
+                <!-- Language Info Section -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="stats-card p-4">
+                            <h5 class="header-title text-center mb-4">
+                                <i class="fas fa-info-circle me-2"></i>Translation Technology
+                            </h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fas fa-check-circle text-success mt-1 me-3"></i>
+                                        <div>
+                                            <h6 class="mb-1">Direct Translation</h6>
+                                            <p class="text-muted small mb-0">
+                                                For common language pairs, we use specialized models for highest quality and accuracy.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fas fa-exchange-alt text-info mt-1 me-3"></i>
+                                        <div>
+                                            <h6 class="mb-1">Pivot Translation</h6>
+                                            <p class="text-muted small mb-0">
+                                                For rare combinations, we translate via English to ensure all languages work together seamlessly.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-microchip me-1"></i>
+                                    Powered by HuggingFace Transformers & MarianMT Models
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Info -->
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="stats-card p-4">
                             <h5 class="header-title text-center mb-3">
-                                <i class="fas fa-route me-2"></i>How Translation Works
+                                <i class="fas fa-code me-2"></i>Developer API
                             </h5>
-                            <div class="row text-center">
-                                <div class="col-md-6 mb-3">
-                                    <h6 class="text-success">
-                                        <i class="fas fa-check-circle me-2"></i>Direct Translation
-                                    </h6>
-                                    <p class="text-muted small mb-0">
-                                        For common language pairs, we use specialized models for highest quality
-                                    </p>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <h6 class="text-info">
-                                        <i class="fas fa-exchange-alt me-2"></i>Pivot Translation
-                                    </h6>
-                                    <p class="text-muted small mb-0">
-                                        For rare combinations, we translate via English to ensure all languages work together
-                                    </p>
+                            <div class="text-center">
+                                <p class="text-muted mb-3">
+                                    This translator is powered by a robust Django REST API. All features are available via API endpoints.
+                                </p>
+                                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                    <span class="badge bg-dark">Django 4.2</span>
+                                    <span class="badge bg-dark">REST API</span>
+                                    <span class="badge bg-dark">Python</span>
+                                    <span class="badge bg-dark">PyTorch</span>
+                                    <span class="badge bg-dark">Transformers</span>
                                 </div>
                             </div>
                         </div>
@@ -487,6 +579,7 @@
             this.translateBtn = document.getElementById('translateBtn');
             this.clearBtn = document.getElementById('clearBtn');
             this.swapBtn = document.getElementById('swapLanguages');
+            this.speakBtn = document.getElementById('speakBtn');
             this.loadingSpinner = document.getElementById('loadingSpinner');
             this.loadingText = document.getElementById('loadingText');
             this.successAlert = document.getElementById('successAlert');
@@ -495,6 +588,8 @@
             this.exampleBtns = document.querySelectorAll('.example-btn');
             this.translationInfo = document.getElementById('translationInfo');
             this.translationInfoText = document.getElementById('translationInfoText');
+            this.unsupportedInfo = document.getElementById('unsupportedInfo');
+            this.unsupportedInfoText = document.getElementById('unsupportedInfoText');
         }
 
         attachEventListeners() {
@@ -528,14 +623,20 @@
                     this.translate();
                 }
             });
+
+            // Text-to-speech (basic implementation)
+            this.speakBtn.addEventListener('click', () => this.speakTranslation());
         }
 
         async updateTranslationInfo() {
             const sourceLang = this.sourceLang.value;
             const targetLang = this.targetLang.value;
             
+            // Hide both info panels initially
+            this.translationInfo.style.display = 'none';
+            this.unsupportedInfo.style.display = 'none';
+            
             if (sourceLang === targetLang) {
-                this.translationInfo.style.display = 'none';
                 return;
             }
             
@@ -544,23 +645,33 @@
                 const data = await response.json();
                 
                 if (data.success) {
-                    this.translationInfoText.textContent = data.translation_info.description;
-                    this.translationInfo.style.display = 'block';
-                    
-                    // Update styling based on translation type
-                    if (data.translation_info.type === 'pivot') {
-                        this.translationInfo.style.background = '#e3f2fd';
-                        this.translationInfo.style.borderColor = '#bbdefb';
-                        this.translationInfo.style.color = '#1565c0';
+                    if (data.translation_info.available) {
+                        this.translationInfoText.textContent = data.translation_info.description;
+                        
+                        // Update styling based on translation type
+                        if (data.translation_info.type === 'pivot') {
+                            this.translationInfo.style.background = '#e3f2fd';
+                            this.translationInfo.style.borderColor = '#bbdefb';
+                            this.translationInfo.style.color = '#1565c0';
+                        } else {
+                            this.translationInfo.style.background = '#e8f5e8';
+                            this.translationInfo.style.borderColor = '#c8e6c9';
+                            this.translationInfo.style.color = '#2e7d32';
+                        }
+                        
+                        this.translationInfo.style.display = 'block';
+                        this.translateBtn.disabled = false;
                     } else {
-                        this.translationInfo.style.background = '#e8f5e8';
-                        this.translationInfo.style.borderColor = '#c8e6c9';
-                        this.translationInfo.style.color = '#2e7d32';
+                        this.unsupportedInfoText.textContent = data.translation_info.description;
+                        this.unsupportedInfo.style.display = 'block';
+                        this.translateBtn.disabled = true;
                     }
                 }
             } catch (error) {
                 console.error('Failed to get translation info:', error);
                 this.translationInfo.style.display = 'none';
+                this.unsupportedInfo.style.display = 'none';
+                this.translateBtn.disabled = false;
             }
         }
 
@@ -571,9 +682,15 @@
             if (count > 1000) {
                 this.charCount.style.color = '#dc3545';
                 this.translateBtn.disabled = true;
-            } else {
+            } else if (count === 0) {
                 this.charCount.style.color = '#6c757d';
                 this.translateBtn.disabled = false;
+            } else {
+                this.charCount.style.color = '#6c757d';
+                // Don't override the disabled state from translation info
+                if (!this.translateBtn.disabled) {
+                    this.translateBtn.disabled = false;
+                }
             }
         }
 
@@ -619,8 +736,13 @@
                 if (data.success) {
                     this.showTranslation(data.translated_text, data.translation_type);
                     this.showSuccess(`Translation completed in ${data.response_time_ms}ms (${data.translation_description})`);
+                    
+                    // Show speak button if browser supports speech synthesis
+                    if ('speechSynthesis' in window) {
+                        this.speakBtn.style.display = 'inline-block';
+                    }
                 } else {
-                    this.showError(data.error || 'Translation failed. Please try again.');
+                    this.showError(data.error, data);
                 }
             } catch (error) {
                 console.error('Translation error:', error);
@@ -634,7 +756,7 @@
             let pathInfo = '';
             if (translationType === 'pivot') {
                 pathInfo = `<div class="pivot-info mb-2">
-                    <i class="fas fa-exchange-alt me-1"></i>Translated via English for best quality
+                    <i class="fas fa-exchange-alt me-1"></i>Translated via English for maximum compatibility
                 </div>`;
             }
             
@@ -657,10 +779,13 @@
                 <div class="text-muted text-center py-5">
                     <i class="fas fa-arrow-left fa-2x mb-3 d-block"></i>
                     Your translation will appear here
+                    <br>
+                    <small class="mt-2">Select languages and enter text to begin</small>
                 </div>
             `;
             this.updateCharCount();
             this.hideAlerts();
+            this.speakBtn.style.display = 'none';
         }
 
         swapLanguages() {
@@ -678,6 +803,39 @@
             setTimeout(() => {
                 this.swapBtn.style.transform = 'rotate(0deg)';
             }, 300);
+        }
+
+        speakTranslation() {
+            if ('speechSynthesis' in window) {
+                const translatedElement = this.outputText.querySelector('.translated-text');
+                if (translatedElement) {
+                    const text = translatedElement.textContent;
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    
+                    // Set language based on target language
+                    const targetLang = this.targetLang.value;
+                    utterance.lang = this.getLanguageCode(targetLang);
+                    
+                    speechSynthesis.speak(utterance);
+                }
+            }
+        }
+
+        getLanguageCode(lang) {
+            const languageMap = {
+                'en': 'en-US',
+                'es': 'es-ES',
+                'fr': 'fr-FR',
+                'de': 'de-DE',
+                'it': 'it-IT',
+                'pt': 'pt-PT',
+                'ru': 'ru-RU',
+                'zh': 'zh-CN',
+                'ja': 'ja-JP',
+                'ko': 'ko-KR',
+                'ar': 'ar-SA'
+            };
+            return languageMap[lang] || 'en-US';
         }
 
         setLoading(loading) {
@@ -700,8 +858,16 @@
             this.errorAlert.style.display = 'none';
         }
 
-        showError(message) {
-            document.getElementById('errorMessage').textContent = message;
+        showError(message, additionalInfo = null) {
+            let errorHtml = message;
+            if (additionalInfo && additionalInfo.available_languages) {
+                errorHtml += `<br><small>Available languages: ${additionalInfo.available_languages.join(', ')}</small>`;
+            }
+            if (additionalInfo && additionalInfo.suggestion) {
+                errorHtml += `<br><small>${additionalInfo.suggestion}</small>`;
+            }
+            
+            document.getElementById('errorMessage').innerHTML = errorHtml;
             this.errorAlert.style.display = 'block';
             this.successAlert.style.display = 'none';
         }
