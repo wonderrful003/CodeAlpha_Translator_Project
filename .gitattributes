@@ -1,0 +1,9 @@
+# Force Python as the main language
+* linguist-language=Python
+
+# But still properly classify files
+*.py linguist-detectable=true
+*.html linguist-detectable=true
+*.js linguist-detectable=true
+*.css linguist-detectable=true
+*.md linguist-detectable=true
