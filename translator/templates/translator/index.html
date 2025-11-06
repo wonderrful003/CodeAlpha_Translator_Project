@@ -158,6 +158,15 @@
             color: #000000;
         }
         
+        .pivot-info {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 0.9em;
+            color: #1565c0;
+        }
+        
         /* Custom scrollbar */
         .text-area::-webkit-scrollbar {
             width: 6px;
@@ -199,7 +208,7 @@
                         <h1 class="display-4 fw-bold header-title mb-3">
                             <i class="fas fa-language me-3"></i>AI Translator
                         </h1>
-                        <p class="lead header-subtitle">Supporting 25+ languages including 15 African languages</p>
+                        <p class="lead header-subtitle">Supporting 25+ languages with smart translation routing</p>
                     </div>
 
                     <!-- Language Selection -->
@@ -297,6 +306,16 @@
                         </div>
                     </div>
 
+                    <!-- Translation Info -->
+                    <div class="row mb-3">
+                        <div class="col-12 text-center">
+                            <div class="pivot-info" id="translationInfo" style="display: none;">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <span id="translationInfoText">Translation path information</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Text Areas -->
                     <div class="row mb-4">
                         <div class="col-md-6">
@@ -362,28 +381,22 @@
                     <!-- Quick Examples -->
                     <div class="row mt-5">
                         <div class="col-12">
-                            <h6 class="text-center text-muted mb-3">Try These Examples:</h6>
+                            <h6 class="text-center text-muted mb-3">Try These Cross-Language Examples:</h6>
                             <div class="d-flex flex-wrap justify-content-center gap-2">
-                                <button class="btn btn-sm example-btn" data-text="Hello, how are you today?">
-                                    <i class="fas fa-comment me-1"></i>English Greeting
+                                <button class="btn btn-sm example-btn" data-text="Hello, how are you today?" data-source="en" data-target="ny">
+                                    English → Chichewa
                                 </button>
-                                <button class="btn btn-sm example-btn" data-text="Habari za asubuhi?">
-                                    <i class="fas fa-sun me-1"></i>Swahili Morning
+                                <button class="btn btn-sm example-btn" data-text="Moni, muli bwanji?" data-source="ny" data-target="es">
+                                    Chichewa → Spanish
                                 </button>
-                                <button class="btn btn-sm example-btn" data-text="Kedu ka i mere?">
-                                    <i class="fas fa-handshake me-1"></i>Igbo Greeting
+                                <button class="btn btn-sm example-btn" data-text="Habari za asubuhi?" data-source="sw" data-target="fr">
+                                    Swahili → French
                                 </button>
-                                <button class="btn btn-sm example-btn" data-text="Moni, muli bwanji?">
-                                    <i class="fas fa-heart me-1"></i>Chichewa Hello
+                                <button class="btn btn-sm example-btn" data-text="Kedu ka i mere?" data-source="ig" data-target="de">
+                                    Igbo → German
                                 </button>
-                                <button class="btn btn-sm example-btn" data-text="Sawubona, unjani?">
-                                    <i class="fas fa-users me-1"></i>Zulu Greeting
-                                </button>
-                                <button class="btn btn-sm example-btn" data-text="Ina kwana?">
-                                    <i class="fas fa-moon me-1"></i>Hausa Greeting
-                                </button>
-                                <button class="btn btn-sm example-btn" data-text="Selam, indemin neh?">
-                                    <i class="fas fa-star me-1"></i>Amharic Hello
+                                <button class="btn btn-sm example-btn" data-text="Sawubona, unjani?" data-source="zu" data-target="zh">
+                                    Zulu → Chinese
                                 </button>
                             </div>
                         </div>
@@ -395,8 +408,8 @@
                     <div class="col-md-3 mb-3">
                         <div class="stats-card p-3 text-center">
                             <i class="fas fa-bolt fa-2x mb-2 stats-icon"></i>
-                            <h5 class="mb-1 header-title">Lightning Fast</h5>
-                            <small class="text-muted">AI-accelerated translations</small>
+                            <h5 class="mb-1 header-title">Smart Routing</h5>
+                            <small class="text-muted">Direct or pivot translation</small>
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -417,39 +430,34 @@
                         <div class="stats-card p-3 text-center">
                             <i class="fas fa-language fa-2x mb-2 stats-icon"></i>
                             <h5 class="mb-1 header-title">25+ Languages</h5>
-                            <small class="text-muted">Global language support</small>
+                            <small class="text-muted">Any combination supported</small>
                         </div>
                     </div>
                 </div>
 
-                <!-- Language Info -->
+                <!-- Translation Info Section -->
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="stats-card p-4">
                             <h5 class="header-title text-center mb-3">
-                                <i class="fas fa-info-circle me-2"></i>Supported African Languages
+                                <i class="fas fa-route me-2"></i>How Translation Works
                             </h5>
                             <div class="row text-center">
-                                <div class="col-md-4 mb-2">
-                                    <span class="badge bg-dark me-1 mb-1">Swahili</span>
-                                    <span class="badge bg-dark me-1 mb-1">Yoruba</span>
-                                    <span class="badge bg-dark me-1 mb-1">Igbo</span>
-                                    <span class="badge bg-dark me-1 mb-1">Hausa</span>
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-success">
+                                        <i class="fas fa-check-circle me-2"></i>Direct Translation
+                                    </h6>
+                                    <p class="text-muted small mb-0">
+                                        For common language pairs, we use specialized models for highest quality
+                                    </p>
                                 </div>
-                                <div class="col-md-4 mb-2">
-                                    <span class="badge bg-dark me-1 mb-1">Amharic</span>
-                                    <span class="badge bg-dark me-1 mb-1">Somali</span>
-                                    <span class="badge bg-dark me-1 mb-1">Zulu</span>
-                                    <span class="badge bg-dark me-1 mb-1">Xhosa</span>
-                                </div>
-                                <div class="col-md-4 mb-2">
-                                    <span class="badge bg-dark me-1 mb-1">Kinyarwanda</span>
-                                    <span class="badge bg-dark me-1 mb-1">Chichewa</span>
-                                    <span class="badge bg-dark me-1 mb-1">Malagasy</span>
-                                    <span class="badge bg-dark me-1 mb-1">Lingala</span>
-                                    <span class="badge bg-dark me-1 mb-1">Shona</span>
-                                    <span class="badge bg-dark me-1 mb-1">Sesotho</span>
-                                    <span class="badge bg-dark me-1 mb-1">Setswana</span>
+                                <div class="col-md-6 mb-3">
+                                    <h6 class="text-info">
+                                        <i class="fas fa-exchange-alt me-2"></i>Pivot Translation
+                                    </h6>
+                                    <p class="text-muted small mb-0">
+                                        For rare combinations, we translate via English to ensure all languages work together
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -468,6 +476,7 @@
             this.initializeElements();
             this.attachEventListeners();
             this.updateCharCount();
+            this.updateTranslationInfo();
         }
 
         initializeElements() {
@@ -484,6 +493,8 @@
             this.errorAlert = document.getElementById('errorAlert');
             this.charCount = document.getElementById('charCount');
             this.exampleBtns = document.querySelectorAll('.example-btn');
+            this.translationInfo = document.getElementById('translationInfo');
+            this.translationInfoText = document.getElementById('translationInfoText');
         }
 
         attachEventListeners() {
@@ -492,10 +503,21 @@
             this.swapBtn.addEventListener('click', () => this.swapLanguages());
             this.inputText.addEventListener('input', () => this.updateCharCount());
             
+            // Language change listeners
+            this.sourceLang.addEventListener('change', () => this.updateTranslationInfo());
+            this.targetLang.addEventListener('change', () => this.updateTranslationInfo());
+            
             this.exampleBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     this.inputText.value = e.target.getAttribute('data-text');
+                    const sourceLang = e.target.getAttribute('data-source');
+                    const targetLang = e.target.getAttribute('data-target');
+                    
+                    if (sourceLang) this.sourceLang.value = sourceLang;
+                    if (targetLang) this.targetLang.value = targetLang;
+                    
                     this.updateCharCount();
+                    this.updateTranslationInfo();
                     this.hideAlerts();
                 });
             });
@@ -506,6 +528,40 @@
                     this.translate();
                 }
             });
+        }
+
+        async updateTranslationInfo() {
+            const sourceLang = this.sourceLang.value;
+            const targetLang = this.targetLang.value;
+            
+            if (sourceLang === targetLang) {
+                this.translationInfo.style.display = 'none';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/translation-info/?source_lang=${sourceLang}&target_lang=${targetLang}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    this.translationInfoText.textContent = data.translation_info.description;
+                    this.translationInfo.style.display = 'block';
+                    
+                    // Update styling based on translation type
+                    if (data.translation_info.type === 'pivot') {
+                        this.translationInfo.style.background = '#e3f2fd';
+                        this.translationInfo.style.borderColor = '#bbdefb';
+                        this.translationInfo.style.color = '#1565c0';
+                    } else {
+                        this.translationInfo.style.background = '#e8f5e8';
+                        this.translationInfo.style.borderColor = '#c8e6c9';
+                        this.translationInfo.style.color = '#2e7d32';
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to get translation info:', error);
+                this.translationInfo.style.display = 'none';
+            }
         }
 
         updateCharCount() {
@@ -536,6 +592,11 @@
                 return;
             }
 
+            if (sourceLang === targetLang) {
+                this.showError('Source and target languages cannot be the same.');
+                return;
+            }
+
             this.setLoading(true);
             this.hideAlerts();
 
@@ -556,8 +617,8 @@
                 const data = await response.json();
 
                 if (data.success) {
-                    this.showTranslation(data.translated_text);
-                    this.showSuccess(`Translation completed in ${data.response_time_ms}ms`);
+                    this.showTranslation(data.translated_text, data.translation_type);
+                    this.showSuccess(`Translation completed in ${data.response_time_ms}ms (${data.translation_description})`);
                 } else {
                     this.showError(data.error || 'Translation failed. Please try again.');
                 }
@@ -569,12 +630,20 @@
             }
         }
 
-        showTranslation(translatedText) {
+        showTranslation(translatedText, translationType) {
+            let pathInfo = '';
+            if (translationType === 'pivot') {
+                pathInfo = `<div class="pivot-info mb-2">
+                    <i class="fas fa-exchange-alt me-1"></i>Translated via English for best quality
+                </div>`;
+            }
+            
             this.outputText.innerHTML = `
                 <div class="translated-content">
                     <div class="text-success small mb-2">
                         <i class="fas fa-check-circle me-1"></i>Translated Successfully
                     </div>
+                    ${pathInfo}
                     <div class="translated-text" style="line-height: 1.6; font-size: 1.1em;">
                         ${this.escapeHtml(translatedText)}
                     </div>
@@ -600,6 +669,9 @@
             
             this.sourceLang.value = targetLang;
             this.targetLang.value = sourceLang;
+            
+            // Update translation info
+            this.updateTranslationInfo();
             
             // Add animation effect
             this.swapBtn.style.transform = 'rotate(180deg)';
